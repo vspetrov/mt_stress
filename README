@@ -1,0 +1,5 @@
+* BUILD
+  mpicc mt_stress.c -g -o mt_stress
+
+* RUN: having NNODES, PPN ranks per node AND NT threads per rank
+  mpirun -np $((NNODES*PPN/NT)) --map-by socket:span --bind-to socket ./mt_stress --n-threads=4 --n-splits 300 --tests-per-comm 32
